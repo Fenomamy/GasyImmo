@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: gasyimmo
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./gasyimmo.sql:/docker-entrypoint-initdb.d/gasyimmo.sql:ro
+
+  gasyimmo:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+
+volumes:
+  mysql_data:

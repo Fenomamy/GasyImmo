@@ -5,11 +5,11 @@
  * Utilise PDO avec gestion d'erreur claire pour XAMPP
  */
 
-define('DB_HOTE',    'localhost');
-define('DB_NOM',     'gasyimmo');
-define('DB_UTIL',    'root');
-define('DB_PASSE',   '');
-define('DB_CHARSET', 'utf8mb4');
+define('DB_HOTE',    getenv('DB_HOTE') ?: 'localhost');
+define('DB_NOM',     getenv('DB_NOM') ?: 'gasyimmo');
+define('DB_UTIL',    getenv('DB_UTIL') ?: 'root');
+define('DB_PASSE',   getenv('DB_PASSE') ?: '');
+define('DB_CHARSET', getenv('DB_CHARSET') ?: 'utf8mb4');
 
 /**
  * Retourne une connexion PDO unique (singleton)
